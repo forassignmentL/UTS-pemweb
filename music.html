@@ -1,0 +1,206 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore a curated collection of music featuring Hatsune Miku.">
+    <title>Music Archive | MIKU.EXE</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="logo" href="index.html">MIKU<span>.EXE</span></a>
+      
+        <nav aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Miku</a>
+            <a href="music.html" aria-current="page">Music</a>
+        </nav>
+
+        <button id="theme-toggle" type="button">Toggle Theme</button>
+    </header>
+
+    <main>
+        <section class="page-title banner-music">
+            <p class="eyebrow">FILE 003 / AUDIO DATABASE</p>
+            <h1>The Music Archive ♫</h1>
+            <p>
+                Select a track, explore its details,
+                and discover the world of Vocaloid music.
+            </p>
+        </section>
+
+        <section class="player-panel">
+            <p class="eyebrow">NOW SELECTED / TRACK PLAYER</p>
+
+            <div class="player-display">
+                <div class="record-icon" aria-hidden="true">♫</div>
+
+                <div>
+                    <h2 id="now-playing">No track selected</h2>
+                    <p id="track-artist">
+                        Choose a song from the archive below.
+                    </p>
+                    <p id="track-description">
+                        Your next favorite might be one click away!
+                    </p>
+                </div>
+            </div>
+            
+            <audio id="audio-player" controls preload="metadata">
+                Your browser does not support audio playback.
+            </audio>
+
+            <div class="visualizer" id="visualizer" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+            </div>
+
+            <p id="player-status" role="status" aria-live="polite">
+                SYSTEM READY // Select a track to begin.
+            </p>
+        </section>
+
+        <section>
+            <h2>01 / Track Database</h2>
+            <p>
+                Select any track to display its information
+                in the player panel.
+            </p>
+
+            <div class="card-grid">
+                <article class="song-card">
+                    <div>
+                        <p class="eyebrow">TRACK 001</p>
+                        <h3>World is Mine</h3>
+                        <p>Producer: ryo (supercell)</p>
+                        <p>A landmark Miku song with a bold,
+                           playful pop-rock sound.</p>
+                    </div>
+
+                    <button class="track-button"
+                        type="button"
+                        data-track="world">
+                        Select Track
+                    </button>
+                </article>
+
+                <article class="song-card">
+                    <div>
+                        <p class="eyebrow">TRACK 002</p>
+                        <h3>Tell Your World</h3>
+                        <p>Producer: livetune (kz)</p>
+                        <p>An uplifting electronic pop song
+                           about sharing creativity.</p>
+                    </div>
+
+                    <button class="track-button"
+                        type="button"
+                        data-track="tell">
+                        Select Track
+                    </button>
+                </article>
+
+                <article class="song-card">
+                    <div>
+                        <p class="eyebrow">TRACK 003</p>
+                        <h3>Melt</h3>
+                        <p>Producer: ryo (supercell)</p>
+                        <p>A beloved early Miku song about
+                           the excitement of having a crush.</p>
+                    </div>
+
+                    <button class="track-button"
+                        type="button"
+                        data-track="melt">
+                        Select Track
+                    </button>
+                </article>
+
+                <article class="song-card">
+                    <div>
+                        <p class="eyebrow">TRACK 004</p>
+                        <h3>Senbonzakura</h3>
+                        <p>Producer: Kurousa-P</p>
+                        <p>An energetic, dramatic song
+                           with a distinctive Japanese
+                           rock-inspired arrangement.</p>
+                    </div>
+
+                    <button class="track-button"
+                        type="button"
+                        data-track="senbon">
+                        Select Track
+                    </button>
+                </article>
+            </div>
+        </section>
+
+        <section class="interaction">
+            <h2>02 / Your Music Notes</h2>
+
+            <p>
+                Which track would you recommend to another
+                Miku fan? Leave a note in your personal archive.
+            </p>
+
+            <form id="music-note-form">
+                <div class="form-group">
+                    <label for="visitor-name">Your nickname</label>
+                    <input
+                        id="visitor-name"
+                        name="visitor-name"
+                        type="text"
+                        maxlength="30"
+                        required
+                        placeholder="e.g. Digital Diva Fan">
+                </div>
+
+                <div class="form-group">
+                    <label for="favorite-track">Favorite track</label>
+                    <select id="favorite-track"
+                        name="favorite-track" required>
+                        <option value="">Choose a track</option>
+                        <option value="World is Mine">World is Mine</option>
+                        <option value="Tell Your World">Tell Your World</option>
+                        <option value="Melt">Melt</option>
+                        <option value="Senbonzakura">Senbonzakura</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="music-reason">Why do you like it?</label>
+                    <textarea
+                        id="music-reason"
+                        name="music-reason"
+                        rows="3"
+                        maxlength="250"
+                        required
+                        placeholder="Tell us what makes it special..."></textarea>
+                </div>
+
+                <button type="submit">Save Music Note</button>
+            </form>
+
+            <p id="note-status" role="status" aria-live="polite"></p>
+
+            <div id="saved-notes" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>MIKU.EXE — A fan-made educational project.</p>
+        <p>
+            Song names and producer credits are included
+            for informational purposes. All music rights
+            belong to their respective rights holders.
+            This project is unofficial.
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,544 @@
+
+/* ========================================
+   MIKU.EXE — RETRO VOCALOID WEB DESIGN
+   ======================================== */
+
+/* 1. Design variables */
+:root {
+    --cyan: #39d9d0;
+    --cyan-dark: #087e83;
+    --mint: #dffff9;
+    --pink: #ffb8df;
+    --lavender: #dcd5ff;
+    --ink: #254b5b;
+    --paper: #f2fffd;
+    --white: #ffffff;
+    --shadow: 5px 5px 0 #254b5b;
+    --border: 2px solid #254b5b;
+}
+
+/* 2. Basic reset */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: var(--ink);
+    background-color: var(--paper);
+    background-image:
+        radial-gradient(#b8eeeb 1px, transparent 1px);
+    background-size: 18px 18px;
+    line-height: 1.7;
+}
+
+/* 3. Shared links and buttons */
+a {
+    color: var(--cyan-dark);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d13e91;
+    text-decoration: underline;
+}
+
+button,
+.button-link {
+    display: inline-block;
+    padding: 10px 16px;
+    border: var(--border);
+    border-radius: 10px;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        var(--cyan) 100%
+    );
+    color: var(--ink);
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+button:hover,
+.button-link:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--ink);
+    text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #d13e91;
+    outline-offset: 4px;
+}
+
+/* 4. Header and navigation */
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 18px 6%;
+    background: linear-gradient(120deg, #b6fff4, #e9e2ff);
+    border-bottom: 3px solid var(--ink);
+}
+
+.logo {
+    color: var(--ink);
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--cyan-dark);
+}
+
+.site-header nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.site-header nav a {
+    padding: 7px 12px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+.site-header nav a:hover,
+.site-header nav a[aria-current="page"] {
+    border-color: var(--ink);
+    background: var(--white);
+    text-decoration: none;
+}
+
+/* 5. Main layout */
+main {
+    width: min(100% - 32px, 1000px);
+    margin: 32px auto;
+}
+
+section {
+    margin-bottom: 32px;
+    padding: clamp(20px, 4vw, 36px);
+    border: var(--border);
+    border-radius: 18px;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1.25;
+}
+
+h1 {
+    margin: 12px 0;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    letter-spacing: -1px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.eyebrow {
+    color: var(--cyan-dark);
+    font-size: 0.85rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+/* 6. Home page hero */
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        var(--mint),
+        #c9f5ff 55%,
+        var(--lavender)
+    );
+}
+
+.hero::after {
+    content: "01";
+    position: absolute;
+    right: 18px;
+    bottom: -45px;
+    color: rgb(8 126 131 / 10%);
+    font-size: clamp(8rem, 20vw, 13rem);
+    font-weight: 900;
+    pointer-events: none;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.hero p:not(.eyebrow) {
+    max-width: 600px;
+}
+
+/* 7. Content cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.feature-card {
+    padding: 20px;
+    border: var(--border);
+    border-radius: 14px;
+    background: #effffc;
+    transition: transform 0.2s;
+}
+
+.feature-card:nth-child(2n) {
+    background: #fff0f8;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px) rotate(-0.5deg);
+}
+
+.feature-card h3 {
+    margin-top: 0;
+}
+
+/* 8. Forms and interactive sections */
+.interaction {
+    background: #f0eaff;
+}
+
+#system-message {
+    padding: 12px;
+    border: 2px dashed var(--cyan-dark);
+    border-radius: 8px;
+    background: var(--white);
+}
+
+/* Shared styles for future page content */
+.page-title {
+    padding: 28px;
+    background: linear-gradient(135deg, var(--mint), var(--pink));
+}
+
+.info-list {
+    padding-left: 24px;
+}
+
+.song-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding: 18px;
+    border: var(--border);
+    border-radius: 12px;
+    background: var(--mint);
+}
+
+.song-card.is-selected {
+    background: var(--lavender);
+    outline: 3px solid var(--cyan-dark);
+}
+
+.form-group {
+    display: grid;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: var(--border);
+    border-radius: 8px;
+    font: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* 9. Footer */
+footer {
+    padding: 28px 6%;
+    border-top: 3px solid var(--ink);
+    background: #d8f8f4;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    max-width: 750px;
+    margin: 8px auto;
+}
+
+/* 10. Dark theme for the JavaScript toggle */
+body.dark-theme {
+    --ink: #e1f8ff;
+    --paper: #14202f;
+    --white: #202e40;
+    --mint: #25434b;
+    --cyan-dark: #78fff0;
+    --lavender: #37324f;
+    --shadow: 5px 5px 0 #070d16;
+
+    background-color: var(--paper);
+    background-image:
+        radial-gradient(#35445b 1px, transparent 1px);
+}
+
+.dark-theme .site-header {
+    background: linear-gradient(120deg, #173d4a, #302747);
+}
+
+.dark-theme .logo,
+.dark-theme .site-header nav a,
+.dark-theme .feature-card,
+.dark-theme .song-card,
+.dark-theme .hero,
+.dark-theme .interaction,
+.dark-theme footer {
+    color: var(--ink);
+}
+
+.dark-theme .hero {
+    background: linear-gradient(135deg, #193f49, #302747);
+}
+
+.dark-theme .feature-card,
+.dark-theme .feature-card:nth-child(2n),
+.dark-theme .song-card {
+    background: #26394a;
+}
+
+.dark-theme .interaction {
+    background: #302b48;
+}
+
+.dark-theme #system-message {
+    color: var(--ink);
+    background: #14202f;
+}
+
+.dark-theme footer {
+    background: #192b3a;
+}
+
+.dark-theme button,
+.dark-theme .button-link {
+    color: #14202f;
+}
+
+.dark-theme input,
+.dark-theme textarea {
+    color: var(--ink);
+    background: #14202f;
+}
+
+/* 11. Responsive layout for smaller screens */
+@media (max-width: 600px) {
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-header nav {
+        width: 100%;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        width: min(100% - 24px, 1000px);
+        margin: 20px auto;
+    }
+
+    section {
+        margin-bottom: 24px;
+        box-shadow: 3px 3px 0 var(--ink);
+    }
+}
+
+/* 12. Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* Music archive player */
+.player-panel {
+    background: linear-gradient(135deg, #dffff9, #e7e0ff);
+}
+
+.player-display {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.record-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 90px;
+    height: 90px;
+    border: 4px solid var(--ink);
+    border-radius: 50%;
+    background: repeating-radial-gradient(
+        circle,
+        #254b5b 0,
+        #254b5b 3px,
+        #426879 4px,
+        #254b5b 6px
+    );
+    color: #ffffff;
+    font-size: 2rem;
+    animation: record-spin 8s linear infinite;
+}
+
+@keyframes record-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.visualizer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    height: 60px;
+    margin: 24px 0 12px;
+    padding: 8px;
+    border: var(--border);
+    border-radius: 10px;
+    background: #203a4b;
+}
+
+.visualizer span {
+    width: 7px;
+    height: 12px;
+    border-radius: 4px;
+    background: #65f9e8;
+    animation: equalize 0.8s ease-in-out infinite alternate;
+}
+
+.visualizer span:nth-child(3n) {
+    animation-delay: -0.5s;
+}
+
+.visualizer span:nth-child(3n + 1) {
+    animation-delay: -0.2s;
+}
+
+@keyframes equalize {
+    from {
+        height: 8px;
+    }
+
+    to {
+        height: 38px;
+    }
+}
+
+#player-status {
+    padding: 10px;
+    border: 1px dashed var(--cyan-dark);
+    border-radius: 8px;
+    font-family: monospace;
+    overflow-wrap: anywhere;
+}
+
+#saved-notes {
+    display: grid;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+#saved-notes:empty {
+    display: none;
+}
+
+.dark-theme .player-panel {
+    background: linear-gradient(135deg, #193f49, #302747);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .record-icon,
+    .visualizer span {
+        animation: none;
+    }
+}
+
+/* Actual audio player */
+#audio-player {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+}
+
+
+/* Miku background images for page title banners */
+.banner-home {
+    background-image:
+        linear-gradient(
+            rgba(223, 255, 249, 0.82),
+            rgba(220, 213, 255, 0.82)
+        ),
+        url("assets/images/miku-home.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-about {
+    background-image:
+        linear-gradient(
+            rgba(223, 255, 249, 0.82),
+            rgba(220, 213, 255, 0.82)
+        ),
+        url("assets/images/miku-about.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.banner-music {
+    background-image:
+        linear-gradient(
+            rgba(223, 255, 249, 0.82),
+            rgba(220, 213, 255, 0.82)
+        ),
+        url("assets/images/miku-music.png");
+    background-size: cover;
+    background-position: center;
+}
